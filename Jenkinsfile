@@ -31,5 +31,21 @@ pipeline{
                 sh "docker compose down && docker compose up -d --build"
             }
         }
+                stage('Update K8S manifest & push to Repo'){
+            steps {
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'dockerHubCreds', passwordVariable: 'dockerHubPass', usernameVariable: 'dockerHubUser')]) {
+                        sh '''
+                        cat k8s/deployment.yaml
+                        sed -i '' "s/32/latest/g" k8s/deployment.yaml
+                        cat deploy.yaml
+                        git add deploy.yaml
+                        git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
+                        git remote -v
+                        git push https://github.com/iam-veeramalla/cicd-demo-manifests-repo.git HEAD:main
+                        '''                        
+                    }
+                }
+            }
     }
 }
