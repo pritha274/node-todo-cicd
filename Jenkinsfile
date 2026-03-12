@@ -49,11 +49,12 @@ pipeline {
                     )]) {
 
                         sh '''
-                        cat k8s/deployment.yaml
-                        sed -i "s/32/latest/g" k8s/deployment.yaml
-                        cat k8s/deployment.yaml
+                        cd k8s/
+                        cat deployment.yaml
+                        sed -i "s/32/latest/g" deployment.yaml
+                        cat deployment.yaml
 
-                        git add k8s/deployment.yaml
+                        git add deployment.yaml
                         git commit -m "Updated deployment image tag"
                         git push https://github.com/pritha274/node-todo-cicd.git HEAD:master
                         '''
