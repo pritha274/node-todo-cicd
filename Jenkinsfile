@@ -31,7 +31,7 @@ pipeline{
                 sh "docker compose down && docker compose up -d --build"
             }
         }
-        stage('Update K8S manifest & push to Repo'){
+        stage("Update K8S manifest & push to Repo"){
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'dockerHubCreds', passwordVariable: 'dockerHubPass', usernameVariable: 'dockerHubUser')]) {
