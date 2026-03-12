@@ -21,7 +21,7 @@ spec:
         - name: node-container
           image: trainwithshubham/node-app-batch-6
           ports:
-            - containerPort: 8000
+            - containerPort: 8081
           resources:
             requests:
               memory: "64Mi"
