@@ -48,14 +48,15 @@ pipeline {
                         passwordVariable: 'dockerHubPass'
                     )]) {
 
-                        sh '''
-                        cd k8s/
-                        cat Deployment.yaml
-                        sed -i "s/32/latest/g" Deployment.yaml
-                        cat Deployment.yaml
+                        sh ''' 
+                        ls -l k8s
+                        cd k8s/ 
+                        cat deployment.yaml
+                        sed -i "s/32/latest/g" deployment.yaml
+                        cat deployment.yaml
 
-                        git add Deployment.yaml
-                        git commit -m "Updated Deployment image tag"
+                        git add deployment.yaml
+                        git commit -m "Updated deployment image tag"
                         git push https://github.com/pritha274/node-todo-cicd.git HEAD:master
                         '''
                     }
