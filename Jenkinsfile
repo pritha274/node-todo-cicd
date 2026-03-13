@@ -57,7 +57,7 @@ pipeline {
 
                         git add deployment.yml
                         git commit -m "Updated deployment image tag" || true
-                        git push https://github.com/pritha274/node-todo-cicd.git HEAD:master
+                        git push https://$GIT_USER:$GIT_PASS@github.com/pritha274/node-todo-cicd.git HEAD:master
                         '''
                     }
                 }
