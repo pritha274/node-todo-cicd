@@ -10,7 +10,7 @@ COPY . .
 #Install the dependecies
 RUN npm install
 RUN npm run test
-EXPOSE 8000
+EXPOSE 8001
 
 #Run the code
 CMD ["node","app.js"]
