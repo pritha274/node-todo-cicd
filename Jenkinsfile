@@ -51,7 +51,7 @@ pipeline {
                         sh '''
                         cd k8s/
                         cat Deployment.yaml
-                        sed -i "s/32/latest/g" deployment.yaml
+                        sed -i "s/32/latest/g" Deployment.yaml
                         cat Deployment.yaml
 
                         git add Deployment.yaml
