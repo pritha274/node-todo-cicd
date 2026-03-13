@@ -52,11 +52,11 @@ pipeline {
                         ls -l k8s
                         cd k8s/ 
                         cat deployment.yml
-                        sed -i "s|trainwithshubham/node-app-batch-6|trainwithshubham/node-app-batch-6:latest|g" deployment.yml
+                        sed -i "s|image:.*|image: annam536/node-app:latest|g" deployment.yml
                         cat deployment.yml
 
                         git add deployment.yml
-                        git commit -m "Updated deployment image tag"
+                        git commit -m "Updated deployment image tag" || true
                         git push https://github.com/pritha274/node-todo-cicd.git HEAD:master
                         '''
                     }
