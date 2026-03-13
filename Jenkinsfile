@@ -52,7 +52,7 @@ pipeline {
                         ls -l k8s
                         cd k8s/ 
                         cat deployment.yml
-                        sed -i "s/32/latest/g" deployment.yml
+                        sed -i "s|trainwithshubham/node-app-batch-6|trainwithshubham/node-app-batch-6:latest|g"
                         cat deployment.yml
 
                         git add deployment.yml
